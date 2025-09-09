@@ -1,0 +1,202 @@
+/*
+   $ TEAM    : https://instagram.com/darkxcode_
+   $ AUTHOR  : https://t.me/zlaxtert 
+   $ CODE    : https://t.me/zexkings 
+   $ DESIGN  : https://t.me/danielsmt 
+   $ SITE    : https://darkxcode.site/
+   $ VERSION : 1.0
+*/
+
+:root {
+    --primary-color: #0070ba;
+    --secondary-color: #003087;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --light-bg: #f8f9fa;
+    --dark-bg: #212529;
+    --light-text: #f8f9fa;
+    --dark-text: #212529;
+}
+
+body {
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+    transition: all 0.3s ease;
+}
+
+body.dark-mode {
+    background-color: var(--dark-bg);
+    color: var(--light-text);
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .card {
+    background-color: #2c3034;
+    color: var(--light-text);
+}
+
+.navbar-brand img {
+    height: 30px;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.result-card {
+    margin-bottom: 15px;
+    border-left: 4px solid;
+}
+
+.success-card {
+    border-left-color: var(--success-color);
+}
+
+.valid-card {
+    border-left-color: var(--warning-color);
+}
+
+.die-card {
+    border-left-color: var(--danger-color);
+}
+
+.progress {
+    height: 10px;
+    margin-bottom: 20px;
+}
+
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+
+/*
+   $ TEAM    : https://instagram.com/darkxcode_
+   $ AUTHOR  : https://t.me/zlaxtert 
+   $ CODE    : https://t.me/zexkings 
+   $ DESIGN  : https://t.me/danielsmt 
+   $ SITE    : https://darkxcode.site/
+   $ VERSION : 1.0
+*/
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--primary-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .custom-file-upload {
+    background-color: #2c3034;
+    color: var(--light-text);
+    border-color: #495057;
+}
+
+#file-name {
+    margin-left: 10px;
+    font-style: italic;
+}
+
+footer {
+    margin-top: 30px;
+    padding: 20px 0;
+    border-top: 1px solid #dee2e6;
+}
+
+body.dark-mode footer {
+    border-top: 1px solid #495057;
+}
+
+.list-item {
+    padding: 8px 12px;
+    margin-bottom: 5px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    border-left: 4px solid #6c757d;
+}
+
+body.dark-mode .list-item {
+    background-color: #2c3034;
+    border-left: 4px solid #495057;
+}
+
+.remaining-count {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+body.dark-mode .remaining-count {
+    color: #adb5bd;
+}
+
+.action-buttons {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.result-card:hover .action-buttons {
+    opacity: 1;
+}
+
+.info-tooltip {
+    cursor: pointer;
+    color: var(--primary-color);
+}

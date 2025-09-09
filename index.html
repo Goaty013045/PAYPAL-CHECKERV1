@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PayPal Bulk Checker - DARKXCODE</title>
+    <link rel="icon" href="https://www.paypalobjects.com/webstatic/icon/pp32.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!--
+   $ TEAM    : https://instagram.com/darkxcode_
+   $ AUTHOR  : https://t.me/zlaxtert 
+   $ CODE    : https://t.me/zexkings 
+   $ DESIGN  : https://t.me/danielsmt 
+   $ SITE    : https://darkxcode.site/
+   $ VERSION : 1.0
+-->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg" alt="PayPal Logo" class="me-2">
+                PayPal Bulk Checker
+            </a>
+            <div class="d-flex align-items-center">
+                <span class="me-2">Light</span>
+                <label class="theme-switch">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider"></span>
+                </label>
+                <span class="ms-2">Dark</span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0"><i class="fas fa-cog me-2"></i>Configuration</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="apikey" class="form-label">API Key <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="apikey" placeholder="apikey************" required>
+                                <span class="input-group-text info-tooltip" title="How to get API key: Contact Telegram https://t.me/zlaxtert">
+                                    <i class="fas fa-info-circle"></i>
+                                </span>
+                            </div>
+                            <div class="form-text">How to get API key: Contact Telegram <a href="https://t.me/zlaxtert" target="_blank">ZLAXTERT</a></div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="proxy" class="form-label">Proxy (IP:PORT) <span class="text-danger">*</span></label>
+                            <textarea class="form-control" id="proxy" rows="3" placeholder="IP:PORT" required></textarea>
+                            <div class="form-text">Enter one proxy per line for rotating proxies</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="proxyAuth" class="form-label">Proxy Authentication (optional)</label>
+                            <input type="text" class="form-control" id="proxyAuth" placeholder="username:password">
+                        </div>
+                        <div class="mb-3">
+                            <label for="type_proxy" class="form-label">Proxy Type <span class="text-danger">*</span></label>
+                            <select class="form-select" id="type_proxy" required>
+                                <option value="">Select Proxy Type</option>
+                                <option value="http">HTTP</option>
+                                <option value="https">HTTPS</option>
+                                <option value="socks4">SOCKS4</option>
+                                <option value="socks5">SOCKS5</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!--
+                   $ TEAM    : https://instagram.com/darkxcode_
+                   $ AUTHOR  : https://t.me/zlaxtert 
+                   $ CODE    : https://t.me/zexkings 
+                   $ DESIGN  : https://t.me/danielsmt 
+                   $ SITE    : https://darkxcode.site/
+                   $ VERSION : 1.0
+                -->
+                                
+
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0"><i class="fas fa-list me-2"></i>Email Lists</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="lists" class="form-label">Email|Password List <span class="text-danger">*</span></label>
+                            <textarea class="form-control" id="lists" rows="10" required placeholder="example@example.com|Password123"></textarea>
+                            <div class="form-text">Format: EMAIL|PASSWORD or EMAIL:PASSWORD (one per line)</div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <input type="file" id="file-upload" class="d-none" accept=".txt">
+                                <label for="file-upload" class="custom-file-upload">
+                                    <i class="fas fa-upload me-1"></i> Upload File
+                                </label>
+                                <span id="file-name"></span>
+                            </div>
+                            <div class="remaining-count">
+                                <span id="remaining-count">0</span> accounts remaining
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="fas fa-play-circle me-2"></i>Controls</h5>
+                        <div>
+                            <span class="badge bg-light text-dark" id="checked-count">0 Checked</span>
+                            <span class="badge bg-success ms-1" id="success-count">0 Success</span>
+                            <span class="badge bg-warning text-dark ms-1" id="valid-count">0 Valid</span>
+                            <span class="badge bg-danger ms-1" id="die-count">0 Die</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary btn-lg" id="start-btn">
+                                <i class="fas fa-play me-1"></i> Start Checking
+                            </button>
+                            <button class="btn btn-danger" id="stop-btn" disabled>
+                                <i class="fas fa-stop me-1"></i> Stop Checking
+                            </button>
+                        </div>
+                        <div class="progress mt-3">
+                            <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="form-text text-center" id="progress-text">0% Complete</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0"><i class="fas fa-tasks me-2"></i>Results</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="nav nav-pills nav-justified" id="result-tabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="success-tab" data-bs-toggle="pill" data-bs-target="#success" type="button" role="tab">
+                                    Success Login <span class="badge bg-success ms-1" id="success-tab-count">0</span>
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="valid-tab" data-bs-toggle="pill" data-bs-target="#valid" type="button" role="tab">
+                                    Valid Email <span class="badge bg-warning text-dark ms-1" id="valid-tab-count">0</span>
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="die-tab" data-bs-toggle="pill" data-bs-target="#die" type="button" role="tab">
+                                    Die <span class="badge bg-danger ms-1" id="die-tab-count">0</span>
+                                </button>
+                            </li>
+                        </ul>
+                        <div class="tab-content p-3" id="result-tab-content" style="max-height: 400px; overflow-y: auto;">
+                            <div class="tab-pane fade show active" id="success" role="tabpanel">
+                                <div id="success-results"></div>
+                                <div class="d-grid gap-2 mt-2">
+                                    <button class="btn btn-outline-success" id="copy-success">
+                                        <i class="fas fa-copy me-1"></i> Copy All Success
+                                    </button>
+                                    <button class="btn btn-outline-danger" id="clear-success">
+                                        <i class="fas fa-trash me-1"></i> Clear All
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="valid" role="tabpanel">
+                                <div id="valid-results"></div>
+                                <div class="d-grid gap-2 mt-2">
+                                    <button class="btn btn-outline-success" id="copy-valid">
+                                        <i class="fas fa-copy me-1"></i> Copy All Valid
+                                    </button>
+                                    <button class="btn btn-outline-danger" id="clear-valid">
+                                        <i class="fas fa-trash me-1"></i> Clear All
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="die" role="tabpanel">
+                                <div id="die-results"></div>
+                                <div class="d-grid gap-2 mt-2">
+                                    <button class="btn btn-outline-success" id="copy-die">
+                                        <i class="fas fa-copy me-1"></i> Copy All Die
+                                    </button>
+                                    <button class="btn btn-outline-danger" id="clear-die">
+                                        <i class="fas fa-trash me-1"></i> Clear All
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!--
+   $ TEAM    : https://instagram.com/darkxcode_
+   $ AUTHOR  : https://t.me/zlaxtert 
+   $ CODE    : https://t.me/zexkings 
+   $ DESIGN  : https://t.me/danielsmt 
+   $ SITE    : https://darkxcode.site/
+   $ VERSION : 1.0
+-->
+
+
+    <footer class="mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; <span id="current-year">2025</span> DARKXCODE. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <p>Created by <a href="https://t.me/zlaxtert" target="_blank">ZLAXTERT</a> | API from <a href="https://www.darkxcode.site" target="_blank">DARKXCODE</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/call.js" type="text/javascript"></script>
+</body>
+</html>
